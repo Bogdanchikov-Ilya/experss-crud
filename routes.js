@@ -4,8 +4,8 @@ import TagController from "./controllers/TagController.js";
 const routes = new Router()
 
 routes.get('/tags', TagController.getAll)
-// routes.get('/posts/:id', TagController.getOne)
-// routes.post('/posts', TagController.create)
+routes.get('/tags/:id', TagController.getOne)
+routes.post('/tags', TagController.create)
 // routes.put('/posts', TagController.update)
 // routes.delete('/posts/:id', TagController.delete)
 
