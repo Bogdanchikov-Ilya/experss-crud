@@ -28,10 +28,8 @@ class TagController {
       connection.query(sql, (err, rows, fields) => {
         if (err) return next(err);
         // возваращаю только чтос оазднный id
-        connection.query(sql, (err, rows, fields) => {
-          if (err) return next(err);
-          return res.json(rows);
-        });
+        console.log(this)
+        return res.json(this)
       });
     } catch (err) { res.status(500).json(err) }
   }
