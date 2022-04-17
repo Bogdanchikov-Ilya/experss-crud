@@ -1,12 +1,16 @@
-import mysql from "mysql"
+import mariadb from "mariadb"
 import { dbConfig } from "./db.config.js"
 
-export const connection = mysql.createConnection(dbConfig)
+const pool = mariadb.createPool(dbConfig)
+export let connection;
 
-connection.connect((error) => {
-  if(error) {
-    return console.log('Ошибка подключения к БД!');
-  } else {
-    return console.log('Подлючение успешно!');
+async function connectStart() {
+  try {
+    connection = await pool.getConnection()
+    console.log("GOOD")
+  } catch(e) {
+    console.log(e)
+    console.log("ERROR DB CONNECTION")
   }
-})
+}
+connectStart()
