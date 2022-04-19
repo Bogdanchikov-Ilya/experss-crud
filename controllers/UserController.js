@@ -36,7 +36,10 @@ class UserController {
         return res.status(400).json("Неверный пароль")
       }
       const token = generateAccessToken(candidate[0].id)
-      return res.json({token: token})
+      return res.json({
+        user: candidate[0].name,
+        token: token
+      })
       } catch (e) { res.status(500).json(e)}
   }
 }
